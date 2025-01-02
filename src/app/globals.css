@@ -64,20 +64,34 @@
     @apply border-border;
   }
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground font-['Figtree'];
+  }
+
+  @font-face {
+    font-family: 'Prosa';
+    src: url('/fonts/ProsaBlack.otf') format('opentype');
+    font-weight: 400;
+    font-style: normal;
+  }
+
+  @font-face {
+    font-family: 'Figtree';
+    src: url('/fonts/Figtree-Regular.ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
   }
 }
 
-.gradient-border {
+.gradient-green-border {
   position: relative;
 }
 
-.gradient-border::before {
+.gradient-green-border::before {
   content: '';
   position: absolute;
   inset: 0;
   border-radius: inherit;
-  padding: 1px;
+  padding: 2px;
   background: linear-gradient(
       145.97deg,
       #6bea7a 1.98%,
@@ -94,4 +108,180 @@
     linear-gradient(#fff 0 0);
   -webkit-mask-composite: xor;
   mask-composite: exclude;
+}
+
+.gradient-purple-border {
+  position: relative;
+}
+
+.gradient-purple-border::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 2px;
+  background: linear-gradient(
+      145.97deg,
+      #9b468a 1.98%,
+      rgba(182, 246, 226, 0.14) 31.96%,
+      rgba(255, 255, 255, 0.12) 96.88%
+    ),
+    linear-gradient(
+      95.73deg,
+      rgba(255, 159, 34, 0) 13.47%,
+      rgba(255, 184, 32, 0.2) 99.33%
+    );
+  -webkit-mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+}
+
+.gradient-purple-to-blue-border {
+  position: relative;
+}
+
+.gradient-purple-to-blue-border::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 3px;
+  background: linear-gradient(to right, #fa155c, #3920df);
+  box-shadow: 0 0 10px rgba(250, 21, 92, 0.5);
+  -webkit-mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+}
+
+@layer utilities {
+  .top-left-white-border {
+    position: relative;
+    background: linear-gradient(
+      175deg,
+      #cbcbcbff,
+      #66666631,
+      #66666652,
+      #bababa10
+    );
+    padding-bottom: 0px;
+    padding: 3px;
+    border-radius: 24px;
+  }
+
+  .top-left-white-border > * {
+    background: #131416;
+    border-radius: 23px;
+    height: 100%;
+    width: 100%;
+  }
+
+  .top-white-border {
+    background: linear-gradient(
+      180deg,
+      #cbcbcbff,
+      #66666631,
+      #66666652,
+      #bababa10
+    );
+    padding-bottom: 0px;
+    padding: 1.5px;
+    border-radius: 24px;
+  }
+  .top-white-border > * {
+    border-radius: 23px;
+    height: 100%;
+    width: 100%;
+  }
+
+  .bottom-right-green-border {
+    position: relative;
+    background: linear-gradient(
+      -40deg,
+      #6bea7a 1.98%,
+      rgba(182, 246, 226, 0.14) 31.96%,
+      rgba(255, 255, 255, 0.12) 96.88%
+    );
+    padding-bottom: 0px;
+    padding: 1.5px;
+    border-radius: 24px;
+  }
+
+  .bottom-right-green-border > * {
+    background: #131416;
+    border-radius: 23px;
+    height: 100%;
+    width: 100%;
+  }
+
+  .bottom-right-blue-border {
+    position: relative;
+    background: linear-gradient(
+      -40deg,
+      #228bff 1.98%,
+      rgba(182, 246, 226, 0.14) 31.96%,
+      rgba(255, 255, 255, 0.12) 96.88%
+    );
+    padding-bottom: 0px;
+    padding: 1.5px;
+    border-radius: 24px;
+  }
+
+  .bottom-right-blue-border > * {
+    background: #131416;
+    border-radius: 23px;
+    height: 100%;
+    width: 100%;
+  }
+
+  .bottom-right-purple-border {
+    position: relative;
+    background: linear-gradient(
+      -40deg,
+      #8b22ff 1.98%,
+      rgba(182, 246, 226, 0.14) 31.96%,
+      rgba(255, 255, 255, 0.12) 96.88%
+    );
+    padding-bottom: 0px;
+    padding: 1.5px;
+    border-radius: 24px;
+  }
+
+  .bottom-right-purple-border > * {
+    background: #131416;
+    border-radius: 23px;
+    height: 100%;
+    width: 100%;
+  }
+
+  .bottom-right-yellow-border {
+    position: relative;
+    background: linear-gradient(
+      -40deg,
+      #ffd700 1.98%,
+      rgba(182, 246, 226, 0.14) 31.96%,
+      rgba(255, 255, 255, 0.12) 96.88%
+    );
+    padding-bottom: 0px;
+    padding: 1.5px;
+    border-radius: 24px;
+  }
+
+  .bottom-right-yellow-border > * {
+    background: #131416;
+    border-radius: 23px;
+    height: 100%;
+    width: 100%;
+  }
+
+  .radial-text {
+    background: radial-gradient(circle at center, #ffffff 0%, #8b8282 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    color: transparent;
+  }
 }

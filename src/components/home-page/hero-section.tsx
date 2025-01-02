@@ -4,11 +4,11 @@ import Image from 'next/image';
 
 export function HeroSection() {
   return (
-    <div className="relative min-h-screen w-full overflow-hidden bg-[url('/home-page/hero.svg')] bg-cover bg-center bg-no-repeat">
+    <div className="relative  w-full overflow-hidden bg-[url('/home-page/hero.svg')] bg-cover bg-center bg-no-repeat">
       <div className="absolute inset-0 " />
       <div className="container relative flex min-h-screen flex-col sm:flex-row gap-4 items-start justify-center px-4 py-20 md:py-32">
-        <div className="max-w-3xl">
-          <h1 className="mb-4 text-4xl font-bold tracking-tight text-white md:text-6xl lg:text-7xl">
+        <div className="max-w-4xl">
+          <h1 className="mb-4 text-4xl font-bold tracking-tight text-white md:text-6xl lg:text-7xl radial-text font-title">
             AI UNLEASHED.
             <br />
             <div className="flex items-center space-x-4">

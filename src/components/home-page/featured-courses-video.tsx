@@ -3,6 +3,7 @@
 import { useRef, useState } from 'react';
 import { Play } from 'lucide-react';
 import { VideoFrame } from './video-frame';
+import { TitleText } from '../common/title-text';
 
 export default function FeaturedCoursesVideo() {
   const [isPlaying, setIsPlaying] = useState(false);
@@ -20,13 +21,11 @@ export default function FeaturedCoursesVideo() {
   };
 
   return (
-    <section className="relative w-full overflow-hidden bg-black py-20">
+    <section className="relative w-full overflow-hidden bg-black py-20 -mt-60">
       <div className="container px-4 md:px-6">
         <div className="flex flex-col items-center justify-center space-y-4 text-center">
-          <h2 className="text-3xl font-bold tracking-tighter text-white sm:text-4xl md:text-5xl lg:text-6xl">
-            FEATURED COURSES
-          </h2>
-          <p className="mx-auto max-w-[700px] text-gray-400 md:text-xl">
+          <TitleText>FEATURED COURSES</TitleText>
+          <p className="mx-auto max-w-lg text-gray-400 md:text-xl">
             Our programs helps motivated students become a career ready hireable
             developers
           </p>

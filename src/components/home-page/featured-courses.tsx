@@ -5,6 +5,8 @@ import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
 import { GlowCircle } from './glow-circle';
+import { TitleText } from '../common/title-text';
+import { GradientButton } from '../ui/gradient-button';
 
 interface Course {
   title: string;
@@ -15,6 +17,15 @@ interface Course {
   tags: string[];
 }
 
+interface CrashCourse {
+  title: string;
+  duration: string;
+  image: string;
+  price: string;
+  rating: number;
+  students: string;
+}
+
 const courses: Course[] = [
   {
     title: 'AI and Cloud Development',
@@ -22,7 +33,7 @@ const courses: Course[] = [
       'Our programs helps motivated students become a career ready hireable developers. Our programs helps motivated students become a career ready hireable developers.',
     rating: 4.5,
     students: '3000+ student enrolled',
-    image: '/placeholder.svg?height=400&width=600',
+    image: '/home-page/courses/1.png',
     tags: ['Product Design', 'Advance', 'Advance'],
   },
   {
@@ -31,10 +42,54 @@ const courses: Course[] = [
       'Our programs helps motivated students become a career ready hireable developers. Our programs helps motivated students become a career ready hireable developers.',
     rating: 4.5,
     students: '3000+ student enrolled',
-    image: '/placeholder.svg?height=400&width=600',
+    image: '/home-page/courses/2.png',
     tags: ['Product Design', 'Advance', 'Advance'],
   },
 ];
+
+const crashCourses: CrashCourse[] = [
+  {
+    title: 'AI Full Stack Web Development',
+    duration: '8 weeks',
+    image: '/home-page/courses/3.png',
+    price: 'Free',
+    rating: 4.5,
+    students: '3000+ student enrolled',
+  },
+  {
+    title: 'AI and Cloud Development',
+    duration: '6 weeks',
+    image: '/home-page/courses/3.png',
+    price: 'Free',
+    rating: 4.5,
+    students: '3000+ student enrolled',
+  },
+  {
+    title: 'AI and Cloud Development',
+    duration: '4 weeks',
+    image: '/home-page/courses/3.png',
+    price: 'Free',
+    rating: 4.5,
+    students: '3000+ student enrolled',
+  },
+  {
+    title: 'AI and Cloud Development',
+    duration: '6 weeks',
+    image: '/home-page/courses/3.png',
+    price: 'Free',
+    rating: 4.5,
+    students: '3000+ student enrolled',
+  },
+];
+
+const getGradientColor = (index: number) => {
+  // rgb(16, 13, 40)
+  if (index === 0) return 'rgba(47, 17, 37, 0.8)'; // dark burgundy
+  if (index === 1) return 'rgba(13, 42, 21, 0.6)'; // dark green
+  if (index === 2) return 'rgba(46, 25, 74, 0.8)'; // dark purple/navy
+  if (index === 3) return 'rgba(16, 13, 40, )'; // dark blue
+  return 'rgba(228, 226, 255, 0.1)';
+};
 
 export function FeaturedCourses() {
   return (
@@ -44,10 +99,8 @@ export function FeaturedCourses() {
 
       <div className="relative container mx-auto px-4">
         <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
-            FEATURED COURSES
-          </h2>
-          <p className="text-gray-400 max-w-2xl mx-auto">
+          <TitleText>FEATURED COURSES</TitleText>
+          <p className="text-gray-400 max-w-lg mx-auto">
             Our programs helps motivated students become a career ready hireable
             developers
           </p>
@@ -55,29 +108,41 @@ export function FeaturedCourses() {
 
         <div className="space-y-8 max-w-5xl mx-auto">
           {courses.map((course, index) => (
-            <div key={index} className="relative">
-              {/* Decorative circles */}
-              <GlowCircle
-                className={`${index === 0 ? '-top-20 -right-20' : '-bottom-0 -right-0'} absolute`}
-                color={
-                  index === 0
-                    ? 'rgba(147, 51, 234, 0.35)'
-                    : 'rgba(16, 185, 129, 0.35)'
-                }
-              />
-              {/* <div 
-                className="absolute left-0 bottom-0 w-[600px] h-[600px] rounded-full"
+            <div
+              key={index}
+              className="relative bg-black overflow-hidden rounded-xl"
+            >
+              <div
+                className="absolute  rounded-full "
                 style={{
-                  background: 'linear-gradient(145.97deg, rgba(107, 234, 122, 0.1) 1.98%, rgba(182, 246, 226, 0.04) 31.96%, rgba(255, 255, 255, 0.02) 96.88%)',
-                  filter: 'blur(40px)',
-                  transform: 'translate(-30%, 30%)',
+                  height: '400px',
+                  width: '400px',
+                  background: `radial-gradient(circle at center,
+                   ${getGradientColor(index)} 0%, 
+                  rgba(228,226,255,0) 90%)`,
+                  top: '-100px',
+                  filter: 'blur(20px)',
+                  transform: 'rotate(-45deg)',
                 }}
-              /> */}
-
-              {/* ${    index === 0 ? 'bg-[#1F1934]' : 'bg-[#0A1B1A]' } */}
-              <Card
-                className={`relative rounded-xl overflow-hidden gradient-border bg-black
-                `}
+              />
+              <div
+                className="absolute  rounded-full "
+                style={{
+                  height: '400px',
+                  width: '400px',
+                  background: `radial-gradient(circle at center,
+                   ${getGradientColor(index + 2)} 0%,
+                   rgba(28,226,255,0) 90%)`,
+                  bottom: '-100px',
+                  right: '-100px',
+                  filter: 'blur(20px)',
+                  transform: 'rotate(-45deg)',
+                }}
+              />
+              <div
+                className={`relative rounded-xl overflow-hidden gradient-border
+                  ${index === 0 ? 'gradient-purple-border' : 'gradient-green-border'}
+                  `}
                 style={{
                   border: '1px solid transparent',
                   backgroundClip: 'padding-box',
@@ -94,7 +159,7 @@ export function FeaturedCourses() {
                           className="w-full h-[300px] object-cover rounded-lg"
                         />
                       </div>
-                      <div className="md:w-1/2 space-y-4">
+                      <div className="md:w-1/2 space-y-4 p-4">
                         <div className="flex items-center gap-2">
                           <div className="flex items-center gap-1">
                             <Star className="w-5 h-5 fill-yellow-500 text-yellow-500" />
@@ -116,21 +181,15 @@ export function FeaturedCourses() {
                             <Badge
                               key={tagIndex}
                               variant="outline"
-                              className="bg-gray-900/50 text-gray-300 border-gray-700"
+                              className={`bg-gray-900/50 border-gray-700 text-sm 
+                                ${tagIndex === 0 ? 'text-[#80a65a]' : 'text-white'}
+                                `}
                             >
                               {tag}
                             </Badge>
                           ))}
                         </div>
-                        <Button
-                          variant="outline"
-                          className="relative bg-transparent border-0 text-white mt-4 overflow-hidden
-                            before:absolute before:inset-0 before:bg-gradient-to-r before:from-purple-500 before:to-pink-500 before:rounded-lg
-                            after:absolute after:inset-[1px] after:bg-inherit after:rounded-lg
-                            hover:before:opacity-75 transition-all duration-300"
-                        >
-                          <span className="relative z-10">View details</span>
-                        </Button>
+                        <GradientButton>View Courses</GradientButton>
                       </div>
                     </>
                   ) : (
@@ -163,15 +222,7 @@ export function FeaturedCourses() {
                             </Badge>
                           ))}
                         </div>
-                        <Button
-                          variant="outline"
-                          className="relative bg-transparent border-0 text-white mt-4 overflow-hidden
-                            before:absolute before:inset-0 before:bg-gradient-to-r before:from-purple-500 before:to-pink-500 before:rounded-lg
-                            after:absolute after:inset-[1px] after:bg-inherit after:rounded-lg
-                            hover:before:opacity-75 transition-all duration-300"
-                        >
-                          <span className="relative z-10">View details</span>
-                        </Button>
+                        <GradientButton>View Courses</GradientButton>
                       </div>
                       <div className="md:w-1/2">
                         <img
@@ -183,7 +234,60 @@ export function FeaturedCourses() {
                     </>
                   )}
                 </div>
-              </Card>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <div className="container mx-auto px-4 mt-40">
+        <div className="text-center mb-16">
+          <TitleText>CRASH COURSES</TitleText>
+          <p className="text-gray-400 max-w-lg mx-auto">
+            Our programs helps motivated students become a career ready hireable
+            developers
+          </p>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          {crashCourses.map((course, index) => (
+            <div
+              key={index}
+              className="relative  overflow-hidden rounded-xl gradient-purple-to-blue-border p-[2px]"
+              style={{
+                border: '1px solid transparent',
+                backgroundClip: 'padding-box',
+                WebkitBackgroundClip: 'padding-box',
+              }}
+            >
+              <div className="relative h-fit">
+                <img
+                  src={course.image}
+                  alt={course.title}
+                  className="w-full h-full object-cover"
+                />
+                <div className="absolute top-2 left-2 bg-gray-400 backdrop-blur-sm px-3 py-1 rounded-full">
+                  <span className="text-white font-thin">{course.price}</span>
+                </div>
+              </div>
+
+              <div className="p-4 space-y-2 absolute bottom-0 left-0 right-0 pb-10">
+                <div className="flex items-center gap-2">
+                  <div className="flex items-center gap-1">
+                    <Star className="w-5 h-5 fill-yellow-500 text-yellow-500" />
+                    <span className="font-medium text-yellow-500">
+                      {course.rating}
+                    </span>
+                  </div>
+                  <span className="text-gray-400">•</span>
+                  <span className="text-gray-400 text-sm">
+                    {course.students}
+                  </span>
+                </div>
+                <h3 className="text-xl font-semibold text-white max-w-60 ">
+                  {course.title}
+                </h3>
+              </div>
             </div>
           ))}
         </div>
