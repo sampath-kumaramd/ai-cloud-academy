@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import { Card, CardContent, CardHeader } from '../ui/card';
 
 export default function OutTeam() {
@@ -49,10 +50,12 @@ export default function OutTeam() {
                   }}
                 />
                 <div className="aspect-square overflow-hidden rounded-lg p-4">
-                  <img
+                  <Image
                     src={member.image}
                     alt={member.name}
                     className="w-full h-full object-cover grayscale"
+                    width={400}
+                    height={400}
                   />
                 </div>
                 <div className="p-4 relative z-10 py-4 ">
