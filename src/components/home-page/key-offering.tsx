@@ -1,5 +1,6 @@
+import Image from 'next/image';
 import { TitleText } from '../common/title-text';
-import { Card } from '../ui/card';
+import { Card, CardContent } from '../ui/card';
 
 const offerings = [
   {
@@ -33,9 +34,25 @@ const offerings = [
 ];
 
 export default function KeyOffering() {
+  const getborderClass = (index: number) => {
+    if (index === 0) return 'border-live-classes';
+    if (index === 1) return 'border-capstone';
+    if (index === 2) return 'border-doubt-solving';
+    if (index === 3) return 'border-curriculum';
+    return '';
+  };
+
+  const getGradientColor = (index: number) => {
+    // rgb(16, 13, 40)
+    if (index === 0) return '#6558FF'; // dark blue
+    if (index === 1) return '#FF58C5'; // dark green
+    if (index === 2) return '#FF9858'; // dark purple/navy
+    if (index === 3) return '#46EB75'; // dark burgundy
+    return 'rgba(228, 226, 255, 0.1)';
+  };
   return (
     <section className="w-full bg-black py-16 px-4 ">
-      <div className="max-w-6xl mx-auto space-y-8">
+      <div className="max-w-6xl mx-auto space-y-12">
         <div className="text-center space-y-4">
           <TitleText>KEY OFFERINGS OF THE PROGRAM</TitleText>
           <p className="text-gray-400 max-w-2xl mx-auto">
@@ -44,41 +61,47 @@ export default function KeyOffering() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 ">
           {offerings.map((offering, index) => (
-            <div
+            <Card
               key={offering.title}
-              className="relative rounded-2xl overflow-hidden"
+              className={`w-full bg-transparent max-w-xl  overflow-hidden rounded-lg border-none  ${getborderClass(index)}`}
             >
-              <div
-                className={`absolute inset-0 bg-gradient-to-br ${offering.gradient}`}
-                style={{
-                  maskImage:
-                    'radial-gradient(circle at center, white, transparent)',
-                }}
-              />
-              <div
-                className={`relative border border-transparent bg-gradient-to-br ${offering.borderGradient} rounded-2xl p-[1px]`}
-              >
-                <Card className="relative bg-black/50 backdrop-blur-sm p-6 rounded-2xl border-0">
-                  <div className="flex items-start gap-4">
-                    <div className="w-12 h-12">
-                      <img
-                        src={offering.icon}
-                        alt={offering.title}
-                        className="w-full h-full object-contain"
-                      />
-                    </div>
-                    <div className="space-y-2">
-                      <h3 className="text-xl font-semibold text-white">
-                        {offering.title}
-                      </h3>
-                      <p className="text-gray-400">{offering.description}</p>
-                    </div>
+              <div className="relative">
+                <div
+                  className="absolute rounded-full z-30 "
+                  style={{
+                    height: '150px',
+                    width: '200px',
+                    borderRadius: '200px',
+                    background: getGradientColor(index),
+                    top: '-100px',
+                    right: '320px',
+                    transform: 'rotate(-45deg)',
+                    filter: 'blur(80px)',
+                  }}
+                />
+                <CardContent className="relative z-50 flex flex-col items-start">
+                  <div className="w-32 h-32">
+                    <Image
+                      src={offering.icon}
+                      alt={offering.title}
+                      width={64}
+                      height={64}
+                      className="w-full h-full -ml-7 object-contain"
+                    />
                   </div>
-                </Card>
+                  <div>
+                    <h3 className="text-xl font-semibold text-white">
+                      {offering.title}
+                    </h3>
+                    <p className="text-base font-extralight text-gray-400">
+                      {offering.description}
+                    </p>
+                  </div>
+                </CardContent>
               </div>
-            </div>
+            </Card>
           ))}
         </div>
       </div>
