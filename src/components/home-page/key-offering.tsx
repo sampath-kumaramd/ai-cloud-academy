@@ -61,11 +61,11 @@ export default function KeyOffering() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 ">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 ">
           {offerings.map((offering, index) => (
             <Card
               key={offering.title}
-              className={`w-full bg-transparent max-w-xl  overflow-hidden rounded-lg border-none  ${getborderClass(index)}`}
+              className={`w-full bg-black max-w-xl  overflow-hidden rounded-lg border-none  ${getborderClass(index)}`}
             >
               <div className="relative">
                 <div
