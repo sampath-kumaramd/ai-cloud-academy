@@ -1,6 +1,9 @@
+'use client';
+
 import Image from 'next/image';
 import { TitleText } from '../title-text';
 import { Card, CardContent } from '../ui/card';
+import { motion } from 'framer-motion';
 
 const offerings = [
   {
@@ -33,6 +36,28 @@ const offerings = [
   },
 ];
 
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.2,
+    },
+  },
+};
+
+const cardVariants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.5,
+      ease: 'easeOut',
+    },
+  },
+};
+
 export default function KeyOffering() {
   const getborderClass = (index: number) => {
     if (index === 0) return 'border-live-classes';
@@ -51,59 +76,75 @@ export default function KeyOffering() {
     return 'rgba(228, 226, 255, 0.1)';
   };
   return (
-    <section className="w-full bg-black py-16 px-4 ">
-      <div className="max-w-6xl mx-auto space-y-12">
-        <div className="text-center space-y-4">
+    <section className="w-full bg-black py-8 sm:py-12 md:py-16 px-4">
+      <div className="max-w-6xl mx-auto space-y-8 sm:space-y-12">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+          className="text-center space-y-3 sm:space-y-4"
+        >
           <TitleText>KEY OFFERINGS OF THE PROGRAM</TitleText>
-          <p className="text-gray-400 max-w-2xl mx-auto">
+          <motion.p
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.4, duration: 0.8 }}
+            className="text-gray-400 max-w-2xl mx-auto text-sm sm:text-base px-4"
+          >
             Our programs helps motivated students become a career ready hireable
             developers
-          </p>
-        </div>
+          </motion.p>
+        </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 ">
+        <motion.div
+          variants={containerVariants}
+          initial="hidden"
+          animate="visible"
+          className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6 lg:gap-8"
+        >
           {offerings.map((offering, index) => (
-            <Card
-              key={offering.title}
-              className={`w-full bg-black max-w-xl  overflow-hidden rounded-lg border-none  ${getborderClass(index)}`}
-            >
-              <div className="relative">
-                <div
-                  className="absolute rounded-full z-30 "
-                  style={{
-                    height: '150px',
-                    width: '200px',
-                    borderRadius: '200px',
-                    background: getGradientColor(index),
-                    top: '-100px',
-                    right: '320px',
-                    transform: 'rotate(-45deg)',
-                    filter: 'blur(80px)',
-                  }}
-                />
-                <CardContent className="relative z-50 flex flex-col items-start">
-                  <div className="w-32 h-32">
-                    <Image
-                      src={offering.icon}
-                      alt={offering.title}
-                      width={64}
-                      height={64}
-                      className="w-full h-full -ml-7 object-contain"
-                    />
-                  </div>
-                  <div>
-                    <h3 className="text-xl font-semibold text-white">
-                      {offering.title}
-                    </h3>
-                    <p className="text-base font-extralight text-gray-400">
-                      {offering.description}
-                    </p>
-                  </div>
-                </CardContent>
-              </div>
-            </Card>
+            <motion.div key={offering.title} variants={cardVariants}>
+              <Card
+                className={`w-full bg-black overflow-hidden rounded-lg border-none ${getborderClass(index)}`}
+              >
+                <div className="relative">
+                  <div
+                    className="absolute rounded-full z-30"
+                    style={{
+                      height: '150px',
+                      width: '200px',
+                      borderRadius: '200px',
+                      background: getGradientColor(index),
+                      top: '-100px',
+                      right: '320px',
+                      transform: 'rotate(-45deg)',
+                      filter: 'blur(80px)',
+                    }}
+                  />
+                  <CardContent className="relative z-50 flex flex-col items-start p-4 sm:p-6">
+                    <div className="w-24 h-24 sm:w-32 sm:h-32">
+                      <Image
+                        src={offering.icon}
+                        alt={offering.title}
+                        width={64}
+                        height={64}
+                        className="w-full h-full -ml-4 sm:-ml-7 object-contain"
+                      />
+                    </div>
+                    <div>
+                      <h3 className="text-lg sm:text-xl font-semibold text-white">
+                        {offering.title}
+                      </h3>
+                      <p className="text-sm sm:text-base font-extralight text-gray-400">
+                        {offering.description}
+                      </p>
+                    </div>
+                  </CardContent>
+                </div>
+              </Card>
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
       </div>
     </section>
   );

@@ -7,6 +7,7 @@ import { Card } from '@/components/ui/card';
 import { GlowCircle } from './glow-circle';
 import { TitleText } from '../title-text';
 import { GradientButton } from '../ui/gradient-button';
+import { motion } from 'framer-motion';
 
 interface Course {
   title: string;
@@ -91,25 +92,65 @@ const getGradientColor = (index: number) => {
   return 'rgba(228, 226, 255, 0.1)';
 };
 
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.2,
+    },
+  },
+};
+
+const itemVariants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.5,
+    },
+  },
+};
+
 export function FeaturedCourses() {
   return (
-    <section className="relative py-20 overflow-hidden">
+    <section className="relative py-10 sm:py-20 overflow-hidden">
       {/* Background gradient */}
       <div className="absolute inset-0 bg-[url('/home-page/featured_background.svg')] bg-cover bg-center bg-no-repeat " />
 
       <div className="relative container mx-auto px-4">
-        <div className="text-center mb-16">
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          variants={itemVariants}
+          className="text-center mb-8 sm:mb-16"
+        >
           <TitleText>FEATURED COURSES</TitleText>
-          <p className="text-gray-400 max-w-lg mx-auto">
+          <motion.p
+            initial="hidden"
+            animate="visible"
+            variants={itemVariants}
+            viewport={{ once: true }}
+            className="text-gray-400 max-w-lg mx-auto text-sm sm:text-base px-4"
+          >
             Our programs helps motivated students become a career ready hireable
             developers
-          </p>
-        </div>
+          </motion.p>
+        </motion.div>
 
-        <div className="space-y-8 max-w-5xl mx-auto">
+        <motion.div
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          className="space-y-4 sm:space-y-8 max-w-5xl mx-auto"
+        >
           {courses.map((course, index) => (
-            <div
+            <motion.div
               key={index}
+              variants={itemVariants}
               className="relative bg-black overflow-hidden rounded-xl"
             >
               <div
@@ -149,17 +190,17 @@ export function FeaturedCourses() {
                   WebkitBackgroundClip: 'padding-box',
                 }}
               >
-                <div className="flex flex-col md:flex-row gap-6 p-6">
+                <div className="flex flex-col md:flex-row gap-4 sm:gap-6 p-4 sm:p-6">
                   {index === 0 ? (
                     <>
                       <div className="md:w-1/2">
                         <img
                           src={course.image}
                           alt={course.title}
-                          className="w-full h-[300px] object-cover rounded-lg"
+                          className="w-full h-[200px] sm:h-[300px] object-cover rounded-lg"
                         />
                       </div>
-                      <div className="md:w-1/2 space-y-4 p-4">
+                      <div className="md:w-1/2 space-y-2 sm:space-y-4 p-2 sm:p-4">
                         <div className="flex items-center gap-2">
                           <div className="flex items-center gap-1">
                             <Star className="w-5 h-5 fill-yellow-500 text-yellow-500" />
@@ -172,10 +213,12 @@ export function FeaturedCourses() {
                             {course.students}
                           </span>
                         </div>
-                        <h3 className="text-2xl font-bold text-white">
+                        <h3 className="text-xl sm:text-2xl font-bold text-white">
                           {course.title}
                         </h3>
-                        <p className="text-gray-400">{course.description}</p>
+                        <p className="text-gray-400 text-sm sm:text-base">
+                          {course.description}
+                        </p>
                         <div className="flex flex-wrap gap-2">
                           {course.tags.map((tag, tagIndex) => (
                             <Badge
@@ -194,7 +237,7 @@ export function FeaturedCourses() {
                     </>
                   ) : (
                     <>
-                      <div className="md:w-1/2 space-y-4">
+                      <div className="md:w-1/2 space-y-2 sm:space-y-4">
                         <div className="flex items-center gap-2">
                           <div className="flex items-center gap-1">
                             <Star className="w-5 h-5 fill-yellow-500 text-yellow-500" />
@@ -207,10 +250,12 @@ export function FeaturedCourses() {
                             {course.students}
                           </span>
                         </div>
-                        <h3 className="text-2xl font-bold text-white">
+                        <h3 className="text-xl sm:text-2xl font-bold text-white">
                           {course.title}
                         </h3>
-                        <p className="text-gray-400">{course.description}</p>
+                        <p className="text-gray-400 text-sm sm:text-base">
+                          {course.description}
+                        </p>
                         <div className="flex flex-wrap gap-2">
                           {course.tags.map((tag, tagIndex) => (
                             <Badge
@@ -228,32 +273,46 @@ export function FeaturedCourses() {
                         <img
                           src={course.image}
                           alt={course.title}
-                          className="w-full h-[300px] object-cover rounded-lg"
+                          className="w-full h-[200px] sm:h-[300px] object-cover rounded-lg"
                         />
                       </div>
                     </>
                   )}
                 </div>
               </div>
-            </div>
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
       </div>
 
-      <div className="container mx-auto px-4 mt-40">
-        <div className="text-center mb-16">
+      <div className="container mx-auto px-4 mt-20 sm:mt-40">
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          variants={itemVariants}
+          className="text-center mb-8 sm:mb-16"
+        >
           <TitleText>CRASH COURSES</TitleText>
-          <p className="text-gray-400 max-w-lg mx-auto">
+          <p className="text-gray-400 max-w-lg mx-auto text-sm sm:text-base px-4">
             Our programs helps motivated students become a career ready hireable
             developers
           </p>
-        </div>
+        </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <motion.div
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6"
+        >
           {crashCourses.map((course, index) => (
-            <div
+            <motion.div
               key={index}
-              className="relative  overflow-hidden rounded-xl gradient-purple-to-blue-border p-[2px]"
+              variants={itemVariants}
+              whileHover={{ scale: 1.05 }}
+              className="relative overflow-hidden rounded-xl gradient-purple-to-blue-border p-[2px]"
               style={{
                 border: '1px solid transparent',
                 backgroundClip: 'padding-box',
@@ -271,7 +330,7 @@ export function FeaturedCourses() {
                 </div>
               </div>
 
-              <div className="p-4 space-y-2 absolute bottom-0 left-0 right-0 pb-10">
+              <div className="p-3 sm:p-4 space-y-2 absolute bottom-0 left-0 right-0 pb-6 sm:pb-10">
                 <div className="flex items-center gap-2">
                   <div className="flex items-center gap-1">
                     <Star className="w-5 h-5 fill-yellow-500 text-yellow-500" />
@@ -284,13 +343,13 @@ export function FeaturedCourses() {
                     {course.students}
                   </span>
                 </div>
-                <h3 className="text-xl font-semibold text-white max-w-60 ">
+                <h3 className="text-lg sm:text-xl font-semibold text-white max-w-60">
                   {course.title}
                 </h3>
               </div>
-            </div>
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
       </div>
     </section>
   );
