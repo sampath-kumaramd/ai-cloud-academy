@@ -3,7 +3,7 @@
 import { Star } from 'lucide-react';
 import Image from 'next/image';
 import { Card, CardContent } from '../ui/card';
-import { TitleText } from '../common/title-text';
+import { TitleText } from '../title-text';
 
 interface Testimonial {
   id: number;
@@ -14,7 +14,7 @@ interface Testimonial {
   columnPosition: 'left' | 'middle' | 'right';
 }
 
-const testimonials: Testimonial[] = [
+export const testimonials: Testimonial[] = [
   {
     id: 1,
     name: 'Waldo',
@@ -142,7 +142,7 @@ export default function TestimonialSection() {
   );
 }
 
-function TestimonialCard({ testimonial }: { testimonial: Testimonial }) {
+export function TestimonialCard({ testimonial }: { testimonial: Testimonial }) {
   return (
     <Card className="w-full max-w-xl relative overflow-hidden rounded-lg border-0 top-white-border">
       <div

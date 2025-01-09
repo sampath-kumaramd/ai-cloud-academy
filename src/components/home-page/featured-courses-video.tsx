@@ -3,7 +3,7 @@
 import { useRef, useState } from 'react';
 import { Play } from 'lucide-react';
 import { VideoFrame } from './video-frame';
-import { TitleText } from '../common/title-text';
+import { TitleText } from '../title-text';
 
 export default function FeaturedCoursesVideo() {
   const [isPlaying, setIsPlaying] = useState(false);

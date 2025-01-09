@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import { TitleText } from '../common/title-text';
+import { TitleText } from '../title-text';
 import { Card, CardContent } from '../ui/card';
 
 const offerings = [

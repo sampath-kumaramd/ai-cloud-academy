@@ -5,7 +5,7 @@ import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
 import { GlowCircle } from './glow-circle';
-import { TitleText } from '../common/title-text';
+import { TitleText } from '../title-text';
 import { GradientButton } from '../ui/gradient-button';
 
 interface Course {

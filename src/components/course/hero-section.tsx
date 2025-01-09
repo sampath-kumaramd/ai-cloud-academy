@@ -2,17 +2,30 @@
 
 import { Star } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import { TitleText } from '../common/title-text';
+import { TitleText } from '../title-text';
 import { Badge } from '../ui/badge';
+import { GradientButton } from '../ui/gradient-button';
+import {
+  TestimonialCard,
+  testimonials,
+} from '../home-page/testimonial-section';
 
 export default function HeroSection() {
+  const features = [
+    { text: '13 Interactive live sessions' },
+    { text: '2 projects to apply learnings' },
+    { text: '6 month duration' },
+    { text: '20+ Assignment' },
+    { text: 'Private community of peers' },
+  ];
+
   return (
     <div className="relative min-h-screen bg-black text-white">
       <div className="absolute inset-0 bg-gradient-to-b from-transparent to-black/90">
         <img
           src="/course/image.png"
           alt="Course Hero"
-          className="object-cover absolute mx-auto relative z-10"
+          className="object-cover mx-auto relative z-10"
         />
       </div>
 
@@ -44,41 +57,32 @@ export default function HeroSection() {
 
         {/* CTA Buttons */}
         <div className="flex flex-col sm:flex-row gap-4 justify-center mb-16">
-          <Button className="bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white px-8 py-6 text-lg">
-            Enroll Now
-          </Button>
-          <Button
-            variant="outline"
-            className="border-gray-700 hover:bg-gray-800 text-white px-8 py-6 text-lg"
+          <GradientButton>Sign in</GradientButton>
+          <button
+            className="rounded-lg h-10 border border-white/15 bg-white/10 px-4 py-8  items-center flex justify-center font-medium text-white transition-all
+             hover:bg-white/[0.06] hover:shadow-[0px_4px_24px_0px_rgba(179,121,255,0.4),-4px_0px_8px_0px_rgba(255,21,88,0.3)]"
           >
             View Curriculum
-          </Button>
+          </button>
         </div>
 
         {/* Features */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 max-w-4xl mx-auto">
-          <Badge className="mx-4 my-2">
-            <p className="text-gray-300">13 Interactive live sessions</p>
-          </Badge>
-          <div className="bg-gray-900/50 backdrop-blur-sm rounded-lg px-4 py-3 border border-gray-800">
-            <p className="text-gray-300">2 projects to apply learnings</p>
-          </div>
-          <div className="bg-gray-900/50 backdrop-blur-sm rounded-lg px-4 py-3 border border-gray-800">
-            <p className="text-gray-300">6 month duration</p>
-          </div>
-          <div className="bg-gray-900/50 backdrop-blur-sm rounded-lg px-4 py-3 border border-gray-800">
-            <p className="text-gray-300">20+ Assignment</p>
-          </div>
-        </div>
-
-        {/* Community badge */}
-        <div className="mt-4 inline-block bg-gray-900/50 backdrop-blur-sm rounded-lg px-4 py-3 border border-gray-800">
-          <p className="text-gray-300">Private community of peers</p>
+          {features.map((feature, index) => (
+            <Badge key={index} className="mx-4 my-2">
+              <p className="text-gray-300">{feature.text}</p>
+            </Badge>
+          ))}
         </div>
       </div>
 
       {/* Gradient border at bottom */}
-      <div className="absolute bottom-0 left-0 right-0 h-1   bg-custom-gradient"></div>
+      <div className="relative top-2 left-0 right-0 h-1   bg-custom-gradient" />
+      <div className="container mx-auto  pt-20 pb-20 text-center flex  gap-4">
+        {testimonials.slice(3, 5).map((testimonial) => (
+          <TestimonialCard key={testimonial.id} testimonial={testimonial} />
+        ))}
+      </div>
     </div>
   );
 }

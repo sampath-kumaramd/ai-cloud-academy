@@ -4,7 +4,7 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from '@/components/ui/accordion';
-import { TitleText } from '../common/title-text';
+import { TitleText } from '../title-text';
 
 const faqs = [
   {

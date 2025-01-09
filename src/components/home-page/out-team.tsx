@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import { Card, CardContent, CardHeader } from '../ui/card';
-import { TitleText } from '../common/title-text';
+import { TitleText } from '../title-text';
 
 export default function OutTeam() {
   const getborderClass = (index: number) => {

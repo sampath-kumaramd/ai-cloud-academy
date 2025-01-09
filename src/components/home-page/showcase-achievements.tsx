@@ -1,5 +1,5 @@
 import React from 'react';
-import { TitleText } from '../common/title-text';
+import { TitleText } from '../title-text';
 import Image from 'next/image';
 
 export default function showcaseAchievements() {
