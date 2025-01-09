@@ -123,10 +123,16 @@ export default function TestimonialSection() {
           transition={{ duration: 0.6 }}
         >
           <TitleText>WHAT OUR STUDENTS SAY ABOUT US</TitleText>
-          <p className="text-gray-400 max-w-3xl mx-auto mt-4">
+          <motion.p
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.4, duration: 0.8 }}
+            viewport={{ once: true }}
+            className="text-gray-400 max-w-3xl mx-auto mt-4"
+          >
             Our dedicated team brings together a wealth of knowledge and
             practical insights from both the academic and professional spheres
-          </p>
+          </motion.p>
         </motion.div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 md:gap-6">
