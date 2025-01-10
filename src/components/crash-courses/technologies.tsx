@@ -3,8 +3,31 @@
 import { motion } from 'framer-motion';
 import { technologies } from '../course/what-will-you-learn';
 import Image from 'next/image';
+import { useEffect, useRef } from 'react';
 
 export function Technologies() {
+  const scrollRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const scrollContainer = scrollRef.current;
+    if (!scrollContainer) return;
+
+    const scroll = () => {
+      if (
+        scrollContainer.scrollLeft >=
+        scrollContainer.scrollWidth - scrollContainer.clientWidth
+      ) {
+        scrollContainer.scrollLeft = 0;
+      } else {
+        scrollContainer.scrollLeft += 1;
+      }
+    };
+
+    const intervalId = setInterval(scroll, 30);
+
+    return () => clearInterval(intervalId);
+  }, []);
+
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -34,7 +57,7 @@ export function Technologies() {
       viewport={{ once: true, margin: '-50px' }}
       variants={containerVariants}
     >
-      <div className="overflow-x-auto scrollbar-hide">
+      <div ref={scrollRef} className="overflow-x-auto scrollbar-hide">
         <div className="flex gap-3 md:gap-4 lg:gap-6 min-w-max px-4 sm:px-6">
           {technologies.map((technology) => (
             <motion.div

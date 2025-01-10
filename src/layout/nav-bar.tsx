@@ -36,7 +36,7 @@ export function Navigation() {
 
         {/* Desktop Navigation */}
         <div className="hidden items-center space-x-8 md:flex">
-          {['Home', 'Courses', 'Crash-course', 'About us', 'Contact us'].map(
+          {['Home', 'Courses', 'Team', 'About us', 'Contact us'].map(
             (item, i) => (
               <motion.div
                 key={item}

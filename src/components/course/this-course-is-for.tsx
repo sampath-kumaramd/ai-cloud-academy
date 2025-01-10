@@ -10,27 +10,28 @@ import { TitleText } from '../title-text';
 import { motion } from 'framer-motion';
 import { Award, BookOpen, Star, Trophy } from 'lucide-react';
 import { Card, CardContent } from '../ui/card';
+import Image from 'next/image';
 const courseTargets = [
   {
-    icon: <Award className="w-8 h-8 text-pink-500" />,
+    icon: '/home-page/dashboard.png',
     title: 'Developer Preparing for AWS Cloud Certifications',
     description:
       'Official, technical, legal, medical, financial, business documents, website translations, certified translations.',
   },
   {
-    icon: <Trophy className="w-8 h-8 text-green-500" />,
+    icon: '/home-page/star.png',
     title: 'Has Coding Knowledge and Motivated to Learn new things',
     description:
       'Official, technical, legal, medical, financial, business documents, website translations, certified translations.',
   },
   {
-    icon: <Star className="w-8 h-8 text-orange-500" />,
+    icon: '/home-page/shield.png',
     title: 'Developers want to get promoted with in-demand skills',
     description:
       'Official, technical, legal, medical, financial, business documents, website translations, certified translations.',
   },
   {
-    icon: <BookOpen className="w-8 h-8 text-purple-500" />,
+    icon: '/home-page/paper.png',
     title: 'Developer Preparing for AWS Cloud Certifications',
     description:
       'Official, technical, legal, medical, financial, business documents, website translations, certified translations.',
@@ -100,7 +101,9 @@ export default function ThisCourseIsFor({
               className="bg-zinc-900 border-zinc-800  top-left-white-border"
             >
               <CardContent className="p-6 flex gap-4">
-                <div className="shrink-0">{target.icon}</div>
+                <div className="shrink-0">
+                  <Image src={target.icon} alt="icon" width={50} height={50} />
+                </div>
                 <div className="space-y-2">
                   <h3 className="font-semibold text-lg text-white">
                     {target.title}

@@ -8,6 +8,7 @@ import { GlowCircle } from './glow-circle';
 import { TitleText } from '../title-text';
 import { GradientButton } from '../ui/gradient-button';
 import { motion } from 'framer-motion';
+import { useRouter } from 'next/navigation';
 
 interface Course {
   title: string;
@@ -114,6 +115,8 @@ const itemVariants = {
 };
 
 export function FeaturedCourses() {
+  const router = useRouter();
+
   return (
     <section className="relative py-10 sm:py-20 overflow-hidden">
       {/* Background gradient */}
@@ -312,12 +315,13 @@ export function FeaturedCourses() {
               key={index}
               variants={itemVariants}
               whileHover={{ scale: 1.05 }}
-              className="relative overflow-hidden rounded-xl gradient-purple-to-blue-border p-[2px]"
+              className="relative overflow-hidden rounded-xl gradient-purple-to-blue-border p-[2px] cursor-pointer"
               style={{
                 border: '1px solid transparent',
                 backgroundClip: 'padding-box',
                 WebkitBackgroundClip: 'padding-box',
               }}
+              onClick={() => router.push('/crash-course')}
             >
               <div className="relative h-fit">
                 <img
