@@ -88,6 +88,9 @@ const config = {
         'custom-gradient':
           'linear-gradient(to left, #000000 0%, #8B1736 26%, #5625DF 51%, #8B1751 77%, #000000 100%)',
       },
+      borderWidth: {
+        '1': '1px',
+      },
     },
   },
   plugins: [require('tailwindcss-animate')],
