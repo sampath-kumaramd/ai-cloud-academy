@@ -59,7 +59,11 @@ const itemVariants = {
   },
 };
 
-export default function ThisCourseIsFor() {
+export default function ThisCourseIsFor({
+  isLeftAligned = false,
+}: {
+  isLeftAligned?: boolean;
+}) {
   return (
     <section className="w-full bg-black py-8 sm:py-12 md:py-16 px-4">
       <motion.div
@@ -70,18 +74,26 @@ export default function ThisCourseIsFor() {
         viewport={{ once: true, margin: '-100px' }}
       >
         <motion.div
-          className="text-center space-y-2 sm:space-y-4"
+          className={`space-y-2 sm:space-y-4 ${isLeftAligned ? 'text-left' : 'text-center'}`}
           variants={itemVariants}
         >
           <TitleText> WHO IS THIS COURSE FOR</TitleText>
-          <p className="text-gray-400 text-base sm:text-lg">
+          <p
+            className={`text-gray-400 text-base sm:text-lg ${isLeftAligned ? 'hidden' : ''}`}
+          >
             The curriculum and our expert senior instructors will guide you
             through on the following technologies which you make you a gem in
             the job market
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-5xl mx-auto ">
+        <div
+          className={` max-w-5xl mx-auto ${
+            isLeftAligned
+              ? 'space-y-4'
+              : 'grid grid-cols-1 md:grid-cols-2 gap-6'
+          }`}
+        >
           {courseTargets.map((target, index) => (
             <Card
               key={index}

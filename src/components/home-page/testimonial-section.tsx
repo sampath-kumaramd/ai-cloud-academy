@@ -96,7 +96,11 @@ function StarRating({ rating }: { rating: number }) {
   );
 }
 
-export default function TestimonialSection() {
+export default function TestimonialSection({
+  isLeftAligned = false,
+}: {
+  isLeftAligned?: boolean;
+}) {
   const sectionRef = useRef(null);
   const isInView = useInView(sectionRef, { once: true, margin: '-100px' });
 
@@ -117,7 +121,7 @@ export default function TestimonialSection() {
     >
       <div className="max-w-6xl mx-auto">
         <motion.div
-          className="text-center mb-12"
+          className={`mb-12 ${isLeftAligned ? 'text-left' : 'text-center'}`}
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
           transition={{ duration: 0.6 }}
@@ -128,14 +132,20 @@ export default function TestimonialSection() {
             animate={{ opacity: 1 }}
             transition={{ delay: 0.4, duration: 0.8 }}
             viewport={{ once: true }}
-            className="text-gray-400 max-w-3xl mx-auto mt-4"
+            className={`text-gray-400 max-w-3xl mx-auto mt-4 ${isLeftAligned ? 'hidden' : ''}`}
           >
             Our dedicated team brings together a wealth of knowledge and
             practical insights from both the academic and professional spheres
           </motion.p>
         </motion.div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 md:gap-6">
+        <div
+          className={`grid  gap-4 md:gap-6 ${
+            isLeftAligned
+              ? 'justify-start grid-cols-1  md:grid-cols-2'
+              : 'justify-center grid-cols-1 sm:grid-cols-2 md:grid-cols-3'
+          }`}
+        >
           {/* Left Column */}
           <motion.div
             className="space-y-4 md:space-y-6"
@@ -161,16 +171,21 @@ export default function TestimonialSection() {
           </motion.div>
 
           {/* Right Column */}
-          <motion.div
-            className="space-y-4 md:space-y-6"
-            initial={{ opacity: 0, y: 30 }}
-            animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
-            transition={{ duration: 0.6, delay: 0.6 }}
-          >
-            {rightColumnTestimonials.map((testimonial) => (
-              <TestimonialCard key={testimonial.id} testimonial={testimonial} />
-            ))}
-          </motion.div>
+          {!isLeftAligned && (
+            <motion.div
+              className="space-y-4 md:space-y-6"
+              initial={{ opacity: 0, y: 30 }}
+              animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+              transition={{ duration: 0.6, delay: 0.6 }}
+            >
+              {rightColumnTestimonials.map((testimonial) => (
+                <TestimonialCard
+                  key={testimonial.id}
+                  testimonial={testimonial}
+                />
+              ))}
+            </motion.div>
+          )}
         </div>
       </div>
     </section>

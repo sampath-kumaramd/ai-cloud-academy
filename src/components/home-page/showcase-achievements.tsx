@@ -6,7 +6,11 @@ import { motion } from 'framer-motion';
 import { useInView } from 'framer-motion';
 import { useRef } from 'react';
 
-export default function ShowcaseAchievements() {
+export default function ShowcaseAchievements({
+  isLeftAligned = false,
+}: {
+  isLeftAligned?: boolean;
+}) {
   const sectionRef = useRef(null);
   const isInView = useInView(sectionRef, { once: true });
 
@@ -23,14 +27,14 @@ export default function ShowcaseAchievements() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.4, duration: 0.8 }}
-            className="text-center space-y-4"
+            className={`space-y-4 ${isLeftAligned ? 'text-left' : 'text-center'}`}
           >
             <TitleText>SHOWCASE YOUR ACHIEVEMENTS</TitleText>
             <motion.p
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.4, duration: 0.8 }}
-              className="text-gray-400 max-w-2xl mx-auto px-4"
+              className={`text-gray-400 max-w-2xl mx-auto px-4 ${isLeftAligned ? 'hidden' : ''}`}
             >
               Our dedicated team brings together a wealth of knowledge and
               practical insights from both the academic and professional spheres

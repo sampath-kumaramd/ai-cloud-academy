@@ -58,7 +58,11 @@ const cardVariants = {
   },
 };
 
-export default function KeyOffering() {
+export default function KeyOffering({
+  isLeftAligned,
+}: {
+  isLeftAligned?: boolean;
+}) {
   const getborderClass = (index: number) => {
     if (index === 0) return 'border-live-classes';
     if (index === 1) return 'border-capstone';
@@ -82,14 +86,14 @@ export default function KeyOffering() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
-          className="text-center space-y-3 sm:space-y-4"
+          className={` space-y-3 sm:space-y-4 ${isLeftAligned ? 'text-left max-w-2xl' : 'text-center'}`}
         >
           <TitleText>KEY OFFERINGS OF THE PROGRAM</TitleText>
           <motion.p
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.4, duration: 0.8 }}
-            className="text-gray-400 max-w-2xl mx-auto text-sm sm:text-base px-4"
+            className={`text-gray-400 max-w-2xl mx-auto text-sm sm:text-base px-4 ${isLeftAligned ? 'hidden' : 'text-center'}`}
           >
             Our programs helps motivated students become a career ready hireable
             developers
