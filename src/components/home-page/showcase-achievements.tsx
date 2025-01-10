@@ -11,7 +11,7 @@ export default function ShowcaseAchievements() {
   const isInView = useInView(sectionRef, { once: true });
 
   return (
-    <section ref={sectionRef} className="w-full py-8 md:py-16 px-4">
+    <section ref={sectionRef} className="w-full py-8 md:py-16 px-4 bg-black">
       <div className="max-w-6xl mx-auto space-y-6 md:space-y-8">
         <motion.div
           className="text-center space-y-4"
