@@ -377,3 +377,23 @@
     scrollbar-width: none;
   }
 }
+
+.border-capstone-right {
+  position: relative;
+  background: linear-gradient(
+    210deg,
+    #ea6bce 0%,
+    rgba(246, 182, 234, 0.14) 32%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  padding-bottom: 0px;
+  padding: 1.5px;
+  border-radius: 24px;
+}
+
+.border-capstone-right > * {
+  background: #0e0d0d;
+  border-radius: 23px;
+  height: 100%;
+  width: 100%;
+}

@@ -124,9 +124,9 @@ export default function CourseCurriculum() {
       viewport={{ once: true, amount: 0.1 }}
       variants={containerVariants}
     >
-      <div className="flex justify-center items-center flex-col space-y-4 px-4 sm:px-6">
+      <div className="flex justify-center items-start flex-col space-y-4 ">
         <motion.div
-          className="text-center space-y-2 sm:space-y-4 max-w-2xl mx-auto"
+          className="text-start space-y-2 sm:space-y-4 mx-auto"
           variants={itemVariants}
         >
           <TitleText>COURSE CURRICULUM</TitleText>
@@ -135,10 +135,6 @@ export default function CourseCurriculum() {
             through on the following technologies which you make you a gem in
             the job market
           </p>
-        </motion.div>
-
-        <motion.div variants={itemVariants}>
-          <GradientButton>Enroll Now</GradientButton>
         </motion.div>
       </div>
 
