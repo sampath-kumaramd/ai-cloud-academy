@@ -10,6 +10,7 @@ import { Button } from '@/components/ui/button';
 
 import { GradientButton } from '@/components/ui/gradient-button';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
+import Image from 'next/image';
 
 export function Navigation() {
   const [isOpen, setIsOpen] = React.useState(false);
@@ -27,7 +28,12 @@ export function Navigation() {
           transition={{ type: 'spring', stiffness: 400, damping: 10 }}
         >
           <Link href="/" className="flex items-center space-x-3">
-            <span className="text-2xl">✨</span>
+            <Image
+              src="/icon.svg"
+              alt="AI Cloud Academy"
+              width={32}
+              height={32}
+            />
             <span className="text-lg font-medium text-white">
               AI Cloud Academy
             </span>

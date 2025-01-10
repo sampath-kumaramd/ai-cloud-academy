@@ -4,6 +4,7 @@ import { GradientButton } from '@/components/ui/gradient-button';
 import { GradientPill } from './gradient-pill';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
+import { TitleText } from '../title-text';
 
 export function HeroSection() {
   return (
@@ -20,17 +21,20 @@ export function HeroSection() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.4, duration: 0.8 }}
-            className="mb-4 text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold tracking-tight text-white font-title"
+            className="mb-4  font-bold tracking-tight text-white font-title space-y-2"
           >
-            AI UNLEASHED.
-            <br />
+            <TitleText>AI UNLEASHED.</TitleText>
             <div className="flex flex-col sm:flex-row items-center sm:space-x-4">
-              BECOME A <GradientPill />
+              <TitleText>BECOME A </TitleText>
+              <GradientPill />
             </div>
-            <span className="bg-gradient-to-r from-red-500 via-purple-500 to-blue-500 bg-clip-text text-transparent">
-              DEVELOPER
-            </span>{' '}
-            WITH US.
+            <div className="lg:flex word-wrap ">
+              <span className="bg-gradient-to-r from-red-500 via-purple-500 to-blue-500 bg-clip-text text-transparent text-4xl sm:text-5xl md:text-6xl lg:text-7xl pe-2">
+                DEVELOPER
+              </span>
+              {'  '}
+              <TitleText>WITH US.</TitleText>
+            </div>
           </motion.h1>
           <motion.p
             initial={{ opacity: 0, y: 20 }}

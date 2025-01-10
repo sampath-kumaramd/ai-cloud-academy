@@ -206,10 +206,10 @@ export function FeaturedCourses() {
                       <div className="md:w-1/2 space-y-2 sm:space-y-4 p-2 sm:p-4">
                         <div className="flex items-center gap-2">
                           <div className="flex items-center gap-1">
-                            <Star className="w-5 h-5 fill-yellow-500 text-yellow-500" />
                             <span className="font-medium text-yellow-500">
                               {course.rating}
                             </span>
+                            <Star className="w-4 h-4 fill-yellow-500 text-yellow-500" />
                           </div>
                           <span className="text-gray-400">•</span>
                           <span className="text-gray-400 text-sm">
@@ -243,10 +243,10 @@ export function FeaturedCourses() {
                       <div className="md:w-1/2 space-y-2 sm:space-y-4">
                         <div className="flex items-center gap-2">
                           <div className="flex items-center gap-1">
-                            <Star className="w-5 h-5 fill-yellow-500 text-yellow-500" />
                             <span className="font-medium text-yellow-500">
                               {course.rating}
                             </span>
+                            <Star className="w-4 h-4 fill-yellow-500 text-yellow-500" />
                           </div>
                           <span className="text-gray-400">•</span>
                           <span className="text-gray-400 text-sm">

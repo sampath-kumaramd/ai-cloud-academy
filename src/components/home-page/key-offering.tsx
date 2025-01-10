@@ -8,28 +8,31 @@ import { motion } from 'framer-motion';
 const offerings = [
   {
     title: 'Live Classes',
-    description: 'Weekly live classes with industry experts',
+    description:
+      '12+ hours of live interactive classes every week by industry experts',
     icon: '/home-page/key-offerings/live-classes.svg',
     gradient: 'from-blue-500/20 to-blue-900/20',
     borderGradient: 'from-blue-500 to-blue-900',
   },
   {
     title: 'Capstone Projects',
-    description: 'Build real-world projects that get you hired',
+    description:
+      'Industry-relevant projects to build your portfolio and get you job-ready',
     icon: '/home-page/key-offerings/capstone.svg',
     gradient: 'from-purple-500/20 to-purple-900/20',
     borderGradient: 'from-purple-500 to-purple-900',
   },
   {
     title: 'Doubt Solving',
-    description: 'Get your doubts solved by expert developers',
+    description: 'Doubt resolution in 24 hrs via expert led discussion forums',
     icon: '/home-page/key-offerings/doubt-solving.svg',
     gradient: 'from-orange-500/20 to-orange-900/20',
     borderGradient: 'from-orange-500 to-orange-900',
   },
   {
     title: 'Comprehensive Curriculum',
-    description: 'Well-structured curriculum to master development',
+    description:
+      'Structured content and learning resources to help you crack the Relevel Test',
     icon: '/home-page/key-offerings/curriculum.svg',
     gradient: 'from-green-500/20 to-green-900/20',
     borderGradient: 'from-green-500 to-green-900',
@@ -130,12 +133,12 @@ export default function KeyOffering({
                       <Image
                         src={offering.icon}
                         alt={offering.title}
-                        width={64}
-                        height={64}
-                        className="w-full h-full -ml-4 sm:-ml-7 object-contain"
+                        width={80}
+                        height={80}
+                        className="w-full h-full -ml-4 sm:-ml-8  -mt-4 sm:-mt-8 object-contain"
                       />
                     </div>
-                    <div>
+                    <div className="space-y-2 pb-4 -mt-8">
                       <h3 className="text-lg sm:text-xl font-semibold text-white">
                         {offering.title}
                       </h3>

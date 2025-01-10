@@ -10,7 +10,7 @@ import SpecialProjects from '@/components/course/special-projects';
 
 export default function CoursePage() {
   return (
-    <div className="bg-black">
+    <div className="bg-black pt-20">
       <CourseHeroSection />
       <WhatWillYouLearn />
       <KeyOffering />

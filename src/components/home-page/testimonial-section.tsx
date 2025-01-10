@@ -89,7 +89,7 @@ function StarRating({ rating }: { rating: number }) {
       {[...Array(5)].map((_, index) => (
         <Star
           key={index}
-          className={`w-4 h-4 ${index < rating ? 'fill-yellow-400 text-yellow-400' : 'text-yellow-400'}`}
+          className={`w-4 h-4 ${index < rating ? 'fill-yellow-400 text-yellow-400' : 'text-gray-400 fill-gray-400'}`}
         />
       ))}
     </div>
@@ -194,8 +194,8 @@ export default function TestimonialSection({
 
 export function TestimonialCard({ testimonial }: { testimonial: Testimonial }) {
   return (
-    <motion.div whileHover={{ scale: 0.98 }} transition={{ duration: 0.2 }}>
-      <Card className="w-full relative overflow-hidden rounded-lg border-0 top-white-border">
+    <motion.div whileHover={{ scale: 1.02 }} transition={{ duration: 0.2 }}>
+      <Card className="w-full relative overflow-hidden rounded-lg border-0 top-white-border p-0">
         <div
           className="absolute  rounded-full z-30 "
           style={{
@@ -210,7 +210,7 @@ export function TestimonialCard({ testimonial }: { testimonial: Testimonial }) {
           }}
         />
         <CardContent className="p-6 relative z-10 bg-[#141517] bg-gradient-to-b from-white/10 via-white/5 to-transparent ">
-          <div className="relative rounded-lg p-6  z-10">
+          <div className="relative rounded-lg z-10">
             <div className="flex items-center gap-4 mb-4">
               <Image
                 src={testimonial.image}

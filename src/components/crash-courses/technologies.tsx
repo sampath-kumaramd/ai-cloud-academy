@@ -72,7 +72,7 @@ export function Technologies() {
                     alt="Technology icon"
                     width={100}
                     height={100}
-                    className="w-full h-12 sm:h-14 md:h-16 object-contain p-2 sm:p-3"
+                    className="w-full h-12 sm:h-14 md:h-16 object-contain p-2 sm:p-3 grayscale"
                   />
                 </div>
               </div>
