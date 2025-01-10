@@ -69,22 +69,26 @@ const technologies = [
 
 export function Technologies() {
   return (
-    <div className="grid grid-cols-4 gap-6">
+    <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6">
       {technologies.map((technology) => (
-        <div
+        <motion.div
           key={technology.id}
+          initial={{ opacity: 0, scale: 0.5 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5, delay: technology.id * 0.1 }}
           className="top-white-border w-full h-auto rounded-sm"
         >
-          <div className=" bg-zinc-900/90 p-4 flex items-center justify-center">
+          <div className="bg-zinc-900/90 p-4 flex items-center justify-center">
             <Image
               src={technology.image}
               alt="description"
               width={100}
               height={100}
-              className="w-full h-20 p-5"
+              className="w-full h-16 sm:h-20 p-3 sm:p-5"
             />
           </div>
-        </div>
+        </motion.div>
       ))}
     </div>
   );
@@ -150,8 +154,8 @@ export function VideoFrame({ videoSrc, posterImage }: VideoFrameProps) {
 
 export default function WhatWillYouLearn() {
   return (
-    <div className="relative min-h-screen bg-black text-white">
-      <div className="container mx-auto">
+    <div className="relative min-h-screen bg-black text-white py-12 sm:py-16">
+      <div className="container mx-auto px-4 sm:px-6">
         <motion.div
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -166,38 +170,59 @@ export default function WhatWillYouLearn() {
           </p>
         </motion.div>
 
-        <div className="grid md:grid-cols-2 grid-cols-1 gap-36 py-16">
-          <div className="flex flex-col space-y-8 gap-8">
+        <div className="grid lg:grid-cols-2 grid-cols-1 gap-8 lg:gap-24 py-8 sm:py-16">
+          <motion.div
+            initial={{ opacity: 0, x: -50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="flex flex-col space-y-8 gap-8"
+          >
             {subjects.map((subject, index) => (
-              <div key={index} className="grid grid-cols-4 gap-36">
-                <div className="col-span-1 relative">
-                  <div className="top-white-border w-36 h-36 rounded-xl">
-                    <div className=" bg-zinc-900/90 p-4 flex items-center justify-center">
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 50 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: index * 0.2 }}
+                className="grid grid-cols-1 sm:grid-cols-4 gap-4 sm:gap-8 "
+              >
+                <div className="col-span-1 relative flex justify-center sm:justify-start">
+                  <div className="top-white-border w-28 sm:w-36 h-28 sm:h-36 rounded-xl">
+                    <div className="bg-zinc-900/90 p-4 flex items-center justify-center">
                       <Image
                         src={subject.image}
                         alt={subject.title}
                         width={100}
                         height={100}
-                        className="w-16 h-16"
+                        className="w-12 h-12 sm:w-16 sm:h-16"
                       />
                     </div>
                   </div>
                 </div>
-                <div className="col-span-3">
-                  <div className="text-2xl font-semibold mb-4">
+                <div className="col-span-1 sm:col-span-3 text-center sm:text-left">
+                  <div className="text-xl sm:text-2xl font-semibold mb-2 sm:mb-4">
                     {subject.title}
                   </div>
-                  <p className="text-lg text-gray-300">{subject.description}</p>
+                  <p className="text-base sm:text-lg text-gray-300">
+                    {subject.description}
+                  </p>
                 </div>
-              </div>
+              </motion.div>
             ))}
-          </div>
-          <div>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, x: 50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+          >
             <VideoFrame
               videoSrc="/course/what-will-you-learn/person-with-vr.mp4"
               posterImage="/course/what-will-you-learn/person-with-vr.png"
             />
-          </div>
+          </motion.div>
         </div>
 
         <Technologies />
