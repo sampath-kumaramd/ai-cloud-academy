@@ -55,7 +55,7 @@ export default function CrashCourseHeroSection() {
           {/* Left Column */}
           <motion.div
             variants={itemVariants}
-            className="space-y-8 sm:space-y-12"
+            className="space-y-8 sm:space-y-12 order-2 sm:order-1"
           >
             <motion.div variants={itemVariants} className="space-y-4">
               <TitleText>AI AND CLOUD DEVELOPMENT</TitleText>
@@ -80,7 +80,7 @@ export default function CrashCourseHeroSection() {
           {/* Right Column */}
           <motion.div
             variants={itemVariants}
-            className="lg:mt-0 w-full max-w-2xl mx-auto lg:max-w-none"
+            className="lg:mt-0 w-full max-w-2xl mx-auto lg:max-w-none order-1 sm:order-2"
           >
             <Card className="w-full bg-black/50 overflow-hidden rounded-lg border-capstone-right border-0 ">
               <div className="relative">

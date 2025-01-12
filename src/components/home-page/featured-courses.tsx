@@ -9,6 +9,7 @@ import { TitleText } from '../title-text';
 import { GradientButton } from '../ui/gradient-button';
 import { motion } from 'framer-motion';
 import { useRouter } from 'next/navigation';
+import { useEffect, useState } from 'react';
 
 interface Course {
   title: string;
@@ -116,6 +117,16 @@ const itemVariants = {
 
 export function FeaturedCourses() {
   const router = useRouter();
+  const [currentSlide, setCurrentSlide] = useState(0);
+
+  // Auto scroll effect
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentSlide((prev) => (prev + 1) % crashCourses.length);
+    }, 3000); // Change slide every 3 seconds
+
+    return () => clearInterval(interval);
+  }, []);
 
   return (
     <section className="relative py-10 sm:py-20 overflow-hidden">
@@ -303,12 +314,88 @@ export function FeaturedCourses() {
           </p>
         </motion.div>
 
+        {/* Mobile Scrollable View */}
+        <div className="block sm:hidden">
+          <motion.div
+            variants={containerVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            className="relative"
+          >
+            <div
+              className="flex overflow-x-auto snap-x snap-mandatory hide-scrollbar"
+              style={{ scrollBehavior: 'smooth' }}
+            >
+              {crashCourses.map((course, index) => (
+                <motion.div
+                  key={index}
+                  variants={itemVariants}
+                  whileHover={{ scale: 0.95 }}
+                  className="snap-center flex-none w-[85%] mr-4 relative overflow-hidden rounded-xl gradient-purple-to-blue-border p-[2px] cursor-pointer"
+                  style={{
+                    border: '1px solid transparent',
+                    backgroundClip: 'padding-box',
+                    WebkitBackgroundClip: 'padding-box',
+                  }}
+                  onClick={() => router.push('/crash-course')}
+                >
+                  <div className="relative h-fit">
+                    <img
+                      src={course.image}
+                      alt={course.title}
+                      className="w-full h-full object-cover"
+                    />
+                    <div className="absolute top-2 left-2 bg-gray-400 backdrop-blur-sm px-3 py-1 rounded-full">
+                      <span className="text-white font-thin">
+                        {course.price}
+                      </span>
+                    </div>
+                  </div>
+
+                  <div className="p-3 sm:p-4 space-y-2 absolute bottom-0 left-0 right-0 pb-6 sm:pb-10">
+                    <div className="flex items-center gap-2">
+                      <div className="flex items-center gap-1">
+                        <Star className="w-5 h-5 fill-yellow-500 text-yellow-500" />
+                        <span className="font-medium text-yellow-500">
+                          {course.rating}
+                        </span>
+                      </div>
+                      <span className="text-gray-400">•</span>
+                      <span className="text-gray-400 text-sm">
+                        {course.students}
+                      </span>
+                    </div>
+                    <h3 className="text-lg sm:text-xl font-semibold text-white max-w-60">
+                      {course.title}
+                    </h3>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+
+            {/* Indicators */}
+            <div className="flex justify-center gap-2 mt-4">
+              {crashCourses.map((_, index) => (
+                <button
+                  key={index}
+                  className={`w-2 h-2 rounded-full transition-all ${
+                    currentSlide === index ? 'bg-white w-4' : 'bg-gray-600'
+                  }`}
+                  onClick={() => setCurrentSlide(index)}
+                />
+              ))}
+            </div>
+          </motion.div>
+        </div>
+
+        {/* Desktop Grid View */}
         <motion.div
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6"
+          className="hidden sm:grid sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6"
         >
           {crashCourses.map((course, index) => (
             <motion.div

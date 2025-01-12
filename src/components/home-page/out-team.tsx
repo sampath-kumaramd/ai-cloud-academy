@@ -4,8 +4,11 @@ import Image from 'next/image';
 import { Card, CardContent, CardHeader } from '../ui/card';
 import { TitleText } from '../title-text';
 import { motion } from 'framer-motion';
+import { useAutoScroll } from '@/hooks/useAutoScroll';
 
 export default function OutTeam() {
+  const activeIndex = useAutoScroll(teamMembers.length);
+
   const getborderClass = (index: number) => {
     if (index === 0) return 'bottom-right-blue-border';
     if (index === 1) return 'bottom-right-green-border';
@@ -59,11 +62,83 @@ export default function OutTeam() {
         </p>
       </motion.div>
 
+      {/* Mobile Scrollable View */}
+      <div className="sm:hidden overflow-x-auto scrollbar-hide">
+        <motion.div
+          variants={containerVariants}
+          initial="hidden"
+          animate="visible"
+          className="flex space-x-4 py-4 px-2 min-w-min"
+        >
+          {teamMembers.map((member, index) => (
+            <motion.div
+              key={member.name}
+              variants={cardVariants}
+              whileHover={{ scale: 1.05 }}
+              className={`flex-shrink-0 w-[280px] text-center space-y-3 rounded-lg p-4 ${getborderClass(index)}`}
+            >
+              <div className="relative overflow-hidden">
+                <div
+                  className="absolute rounded-full"
+                  style={{
+                    height: '400px',
+                    width: '400px',
+                    background: `radial-gradient(circle at center, ${getGradientColor(index)} 0%, rgba(228,226,255,0) 90%)`,
+                    bottom: '-150px',
+                    transform: 'rotate(-45deg)',
+                  }}
+                />
+                <motion.div
+                  whileHover={{ scale: 1.1 }}
+                  transition={{ duration: 0.3 }}
+                  viewport={{ once: true }}
+                  className="aspect-square overflow-hidden rounded-lg p-4"
+                >
+                  <Image
+                    src={member.image}
+                    alt={member.name}
+                    className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-300"
+                    width={400}
+                    height={400}
+                  />
+                </motion.div>
+                <motion.div
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ delay: 0.3 }}
+                  className="p-4 relative z-10 py-4"
+                >
+                  <h3 className="text-base sm:text-lg font-semibold">
+                    {member.name}
+                  </h3>
+                  <p className="text-gray-400 text-sm sm:text-base">
+                    {member.role}
+                  </p>
+                </motion.div>
+              </div>
+            </motion.div>
+          ))}
+        </motion.div>
+      </div>
+
+      {/* Indicators for Mobile */}
+      <div className="flex justify-center space-x-2 mt-4 sm:hidden">
+        {teamMembers.map((_, index) => (
+          <div
+            key={index}
+            className={`h-2 w-2 rounded-full transition-colors ${
+              index === activeIndex ? 'bg-white' : 'bg-gray-600'
+            }`}
+          />
+        ))}
+      </div>
+
+      {/* Desktop Grid View */}
       <motion.div
         variants={containerVariants}
         initial="hidden"
         animate="visible"
-        className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 lg:gap-8 mt-8 sm:mt-12"
+        className="hidden sm:grid sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 lg:gap-8 mt-8 sm:mt-12"
       >
         {teamMembers.map((member, index) => (
           <motion.div
