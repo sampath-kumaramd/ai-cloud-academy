@@ -69,7 +69,7 @@ export default function HeroSection() {
       </motion.div>
 
       <motion.div
-        className="relative z-10 container mx-auto px-4 pt-96 pb-20 text-center"
+        className="relative z-10 container mx-auto px-4 pt-48 sm:pt-96 pb-20 text-center"
         variants={containerVariants}
         initial="hidden"
         whileInView="visible"

@@ -21,7 +21,7 @@ export function HeroSection() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.4, duration: 0.8 }}
-            className="mb-4  font-bold tracking-tight text-white font-title space-y-2"
+            className="mb-6  font-bold tracking-tight text-white font-title space-y-2"
           >
             <TitleText>AI UNLEASHED.</TitleText>
             <div className="flex flex-col sm:flex-row items-center sm:space-x-4">
@@ -40,7 +40,7 @@ export function HeroSection() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.4, duration: 0.8 }}
-            className="mb-8 max-w-xl text-base sm:text-lg text-white/80 mx-auto md:mx-0"
+            className="mb-6 max-w-xl text-base sm:text-lg text-white/80 mx-auto md:mx-0"
           >
             Our programs helps motivated students become career ready hireable
             developers

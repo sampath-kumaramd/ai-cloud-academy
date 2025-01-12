@@ -2,7 +2,7 @@ import Image from 'next/image';
 
 export function GradientPill() {
   return (
-    <div className="relative w-[175px] h-[50px]">
+    <div className="relative sm:w-[175px] sm:h-[50px] w-[120px] h-[35px]">
       {/* Gradient border container */}
       <div
         className="absolute inset-0 rounded-full"

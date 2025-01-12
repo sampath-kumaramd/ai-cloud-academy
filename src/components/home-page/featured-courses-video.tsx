@@ -22,7 +22,7 @@ export default function FeaturedCoursesVideo() {
   };
 
   return (
-    <section className="relative w-full overflow-hidden bg-black py-12 sm:py-16 lg:py-20 -mt-40 sm:-mt-48 lg:-mt-60">
+    <section className="relative w-full overflow-hidden bg-black py-12 sm:py-16 lg:py-20 -mt-40 sm:-mt-48 lg:-mt-80">
       <div className="container px-4 md:px-6">
         <div className="flex flex-col items-center justify-center space-y-4 text-center">
           <motion.div
